@@ -1,25 +1,26 @@
 package bo;
 
+import base.BasePage;
 import io.qameta.allure.Step;
 import org.testng.asserts.SoftAssert;
-import utils.WaitUtils;
 
-public abstract class BaseBO {
+public abstract class BaseBO<T extends BasePage> {
 
-    protected final WaitUtils wait;
     protected final SoftAssert softAssert;
+    protected final T page;
 
-    protected BaseBO() {
-        this.wait = new WaitUtils();
+    protected BaseBO(T page) {
         this.softAssert = new SoftAssert();
+        this.page = page;
     }
 
     @Step("Open URL: {url}")
     protected void openUrl(String url) {
-        wait.waitForPageLoad();
+        page.openUrl(url);
+        page.waitForPageLoad();
     }
 
-    protected void assertAll() {
+    public void assertAll() {
         softAssert.assertAll();
     }
 }

@@ -8,4 +8,7 @@ import org.aeonbits.owner.Config;
 public interface URLPropertiesMapping extends Config {
     @Key("base.url")
     String baseUrl();
+
+    @Key("careers.qa.url")
+    String careersQaUrl();
 }

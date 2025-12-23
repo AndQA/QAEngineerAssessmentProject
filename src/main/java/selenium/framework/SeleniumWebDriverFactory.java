@@ -9,6 +9,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumWebDriverFactory {
 
+    static {
+        WebDriverManager.chromedriver().setup();
+    }
+
     public static WebDriver getWebDriver() {
 
         boolean headless = EnvironmentManager.envConf.headless();
@@ -16,7 +20,6 @@ public class SeleniumWebDriverFactory {
         switch (EnvironmentManager.envConf.browser().toUpperCase()) {
 
             case "CHROME":
-                WebDriverManager.chromedriver().setup();
                 return new ChromeDriver(buildChromeOptions(headless));
 
             default:
@@ -29,7 +32,6 @@ public class SeleniumWebDriverFactory {
     private static ChromeOptions buildChromeOptions(boolean headless) {
         ChromeOptions options = new ChromeOptions();
 
-        // базові стабільні аргументи
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
@@ -37,7 +39,6 @@ public class SeleniumWebDriverFactory {
         options.setAcceptInsecureCerts(true);
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        // headless fullscreen
         if (headless) {
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");

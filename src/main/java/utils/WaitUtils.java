@@ -12,7 +12,7 @@ public class WaitUtils {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private static final int TIMEOUT =
+    public static final int TIMEOUT =
             EnvironmentManager.envConf.explicitWait() > 0
                     ? EnvironmentManager.envConf.explicitWait()
                     : 10;

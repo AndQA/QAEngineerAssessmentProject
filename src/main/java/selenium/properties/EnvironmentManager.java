@@ -28,6 +28,7 @@ public class EnvironmentManager {
         @Key("browser") String browser();
         @Key("headless") boolean headless();
         @Key("explicit.wait") int explicitWait();
+        @Key("retry_analyzer_limit") int retryAnalyzerLimit();
 
     }
 

@@ -6,6 +6,5 @@ import org.aeonbits.owner.Config;
         "classpath:test-data-${env}.properties"
 })
 public interface TestDataMapping extends Config {
-    @Key("username") String username();
-    @Key("password") String password();
+    //add user data
 }
